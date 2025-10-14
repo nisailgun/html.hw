@@ -7,15 +7,18 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: #333;
-  margin: 40px;
+  margin: 40px auto; /* Kenar boşluğu ve ortalama eklendi */
+  max-width: 1000px;
   line-height: 1.6;
+  padding: 0 15px; /* Responsive kenar boşluğu eklendi */
 }
 
 /* İçerik için arka plan şeffaflığı */
 .netlify-section,
 .photo-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9); /* Şeffaflık artırıldı */
   backdrop-filter: blur(5px);
+  border-radius: 8px;
 }
 
 h1 {
@@ -84,6 +87,7 @@ a:hover {
 /* Fotoğraf galerisi stilleri */
 .gallery {
   display: grid;
+  /* Otomatik sığdırma ile masaüstünde yan yana 300px min-width */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin: 20px 0;
@@ -128,4 +132,27 @@ a:hover {
   color: #999;
   margin-top: 8px;
   text-align: right;
+}
+
+/* Responsive Geliştirmeler (Mobile uyumluluk eklendi) */
+@media (max-width: 767px) {
+    /* Mobil ekranlarda kenar boşluğunu azalt */
+    body {
+        margin: 20px auto; 
+    }
+
+    /* Galeri tek sütun olacak: Mobil cihazlarda fotoğrafların alt alta görünmesini sağlar */
+    .gallery {
+        grid-template-columns: 1fr; /* Tek sütun */
+        gap: 15px;
+    }
+    
+    .photo-card img {
+        height: 220px; 
+    }
+
+    .netlify-button {
+        width: 100%; /* Mobil'de butonu tam genişlik yap */
+        padding: 12px;
+    }
 }
